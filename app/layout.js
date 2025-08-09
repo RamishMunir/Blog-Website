@@ -1,13 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Epilogue, Playfair } from "next/font/google";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const epilogueSans = Epilogue({
+  variable: "--font-epilogue",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -18,11 +19,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${epilogueSans.variable} ${playfair.variable} antialiased`}>
+
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disbaleTransitionOnChange>
+          {children}
+        </ThemeProvider>
+        
       </body>
     </html>
   );
