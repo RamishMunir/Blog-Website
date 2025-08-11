@@ -1,6 +1,7 @@
 import { Epilogue, Playfair } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
+import Navbar from "@/components/ui/navbar";
 
 const epilogueSans = Epilogue({
   variable: "--font-epilogue",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className={`${epilogueSans.variable} ${playfair.variable} antialiased`}>
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disbaleTransitionOnChange>
+          <Navbar/>
           {children}
         </ThemeProvider>
         
